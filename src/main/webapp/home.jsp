@@ -20,7 +20,7 @@
 
 <div class="hero">
   <h1>Plan smarter.</h1>
-  <p>Degree requirements, prerequisites, and professor insights all in one place.</p>
+  <p>Track requirements, plan your roadmap, and find the right professors all in one place.</p>
   <a class="btn btn-primary" href="#">Get Started</a>
   <a class="btn btn-secondary" href="professors.jsp">View Professors</a>
 </div>
