@@ -2,28 +2,25 @@
 <html>
 <head>
   <title>Professors - CourseLane</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    nav a { margin-right: 15px; }
-    table { border-collapse: collapse; margin-top: 20px; }
-    td, th { border: 1px solid #ccc; padding: 8px 12px; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h1>CourseLane</h1>
-<nav>
-  <a href="home.jsp">Dashboard</a>
-  <a href="#">Course Search</a>
-  <a href="#">Roadmap</a>
-  <a href="professors.jsp">Professors</a>
-  <a href="#">Profile</a>
-  <a href="#">Login</a>
+<nav class="topnav">
+  <a class="brand" href="home.jsp">CourseLane</a>
+  <div class="nav-links">
+    <a href="home.jsp">Dashboard</a>
+    <a href="#">Course Search</a>
+    <a href="#">Roadmap</a>
+    <a href="professors.jsp">Professors</a>
+    <a href="#">Profile</a>
+    <a href="#">Login</a>
+  </div>
 </nav>
 
-<h2>Professors</h2>
-<table>
-  <tr><th>Name</th><th>Department</th><th>Avg Rating</th></tr>
+<div class="section">
+  <h2>Meet Your Professors</h2>
+  <div class="card-grid">
   <%
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,16 +32,21 @@
         ResultSet rs = stmt.executeQuery("SELECT * FROM Professors");
 
         while (rs.next()) {
-            out.println("<tr><td>" + rs.getString("Name") + "</td><td>" + rs.getString("Department") + "</td><td>" + rs.getBigDecimal("AvgRating") + "</td></tr>");
+            out.println("<div class='card'>");
+            out.println("<span class='tag'>" + rs.getString("Department") + "</span>");
+            out.println("<h3>" + rs.getString("Name") + "</h3>");
+            out.println("<span class='rating'>&#9733; " + rs.getBigDecimal("AvgRating") + "</span>");
+            out.println("</div>");
         }
         rs.close();
         stmt.close();
         con.close();
     } catch (Exception e) {
-        out.println("<tr><td colspan='3'>Error: " + e.getMessage() + "</td></tr>");
+        out.println("<div class='error'>Error: " + e.getMessage() + "</div>");
     }
   %>
-</table>
+  </div>
+</div>
 
 </body>
 </html>

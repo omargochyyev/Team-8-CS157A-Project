@@ -1,29 +1,33 @@
-<%@ page import="java.sql.*"%>
+<%@ page import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-  <title>Course Lane</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    nav a { margin-right: 15px; }
-    table { border-collapse: collapse; margin-top: 20px; }
-    td, th { border: 1px solid #ccc; padding: 8px 12px; }
-  </style>
+  <title>CourseLane</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h1>CourseLane</h1>
-<nav>
-  <a href="#">Dashboard</a>
-  <a href="#">Course Search</a>
-  <a href="#">Roadmap</a>
-  <a href="professors.jsp">Professors</a>
-  <a href="#">Profile</a>
-  <a href="#">Login</a>
+<nav class="topnav">
+  <a class="brand" href="home.jsp">CourseLane</a>
+  <div class="nav-links">
+    <a href="home.jsp">Dashboard</a>
+    <a href="#">Course Search</a>
+    <a href="#">Roadmap</a>
+    <a href="professors.jsp">Professors</a>
+    <a href="#">Profile</a>
+    <a href="#">Login</a>
+  </div>
 </nav>
 
-<h2>Featured Courses</h2>
-<table>
-  <tr><th>Course</th><th>Title</th><th>Units</th></tr>
+<div class="hero">
+  <h1>Plan smarter.</h1>
+  <p>Degree requirements, prerequisites, and professor insights all in one place.</p>
+  <a class="btn btn-primary" href="#">Get Started</a>
+  <a class="btn btn-secondary" href="professors.jsp">View Professors</a>
+</div>
+
+<div class="section">
+  <h2>Featured Courses</h2>
+  <div class="card-grid">
   <%
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,16 +39,21 @@
         ResultSet rs = stmt.executeQuery("SELECT * FROM Courses");
 
         while (rs.next()) {
-            out.println("<tr><td>" + rs.getString("CourseNum") + "</td><td>" + rs.getString("Title") + "</td><td>" + rs.getInt("Units") + "</td></tr>");
+            out.println("<div class='card'>");
+            out.println("<span class='tag'>" + rs.getString("CourseNum") + "</span>");
+            out.println("<h3>" + rs.getString("Title") + "</h3>");
+            out.println("<p>" + rs.getInt("Units") + " units</p>");
+            out.println("</div>");
         }
         rs.close();
         stmt.close();
         con.close();
     } catch (Exception e) {
-        out.println("<tr><td colspan='3'>Error: " + e.getMessage() + "</td></tr>");
+        out.println("<div class='error'>Error: " + e.getMessage() + "</div>");
     }
   %>
-</table>
+  </div>
+</div>
 
 </body>
 </html>
