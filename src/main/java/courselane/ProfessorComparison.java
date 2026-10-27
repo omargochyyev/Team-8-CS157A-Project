@@ -12,9 +12,6 @@ import java.util.Map;
 
 public class ProfessorComparison {
 
-    private static final String URL =
-        "jdbc:mysql://localhost:3306/CourseLaneDB?autoReconnect=true&useSSL=false";
-
     public static class Row {
         public String name;
         public int reviewCount;
@@ -29,12 +26,7 @@ public class ProfessorComparison {
     }
 
     private static Connection connect() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("MySQL driver not found", e);
-        }
-        return DriverManager.getConnection(URL, "root", "password");
+        return Db.get();
     }
 
     private static double round2(double value) {

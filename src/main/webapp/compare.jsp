@@ -10,12 +10,12 @@
   <a class="brand" href="home.jsp">CourseLane</a>
   <div class="nav-links">
     <a href="home.jsp">Dashboard</a>
-    <a href="#">Course Search</a>
+    <a href="courses.jsp">Course Search</a>
     <a href="#">Roadmap</a>
     <a href="professors.jsp">Professors</a>
     <a href="compare.jsp">Compare</a>
-    <a href="#">Profile</a>
-    <a href="#">Login</a>
+    <a href="profile.jsp">Profile</a>
+    <a href="profile.jsp">Login</a>
   </div>
 </nav>
 

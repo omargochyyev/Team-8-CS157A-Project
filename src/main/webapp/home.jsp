@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, courselane.Db" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
   <title>CourseLane</title>
@@ -10,12 +10,12 @@
   <a class="brand" href="home.jsp">CourseLane</a>
   <div class="nav-links">
     <a href="home.jsp">Dashboard</a>
-    <a href="#">Course Search</a>
+    <a href="courses.jsp">Course Search</a>
     <a href="#">Roadmap</a>
     <a href="professors.jsp">Professors</a>
     <a href="compare.jsp">Compare</a>
-    <a href="#">Profile</a>
-    <a href="#">Login</a>
+    <a href="profile.jsp">Profile</a>
+    <a href="profile.jsp">Login</a>
   </div>
 </nav>
 
@@ -31,19 +31,17 @@
   <div class="card-grid">
   <%
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/CourseLane?autoReconnect=true&useSSL=false",
-            "root", "password");
+        Connection con = Db.get();
 
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM Courses");
+        ResultSet rs = stmt.executeQuery(
+            "SELECT subject_code, course_number, title, units FROM Course ORDER BY 1, 2 LIMIT 6");
 
         while (rs.next()) {
             out.println("<div class='card'>");
-            out.println("<span class='tag'>" + rs.getString("CourseNum") + "</span>");
-            out.println("<h3>" + rs.getString("Title") + "</h3>");
-            out.println("<p>" + rs.getInt("Units") + " units</p>");
+            out.println("<span class='tag'>" + rs.getString("subject_code") + " " + rs.getString("course_number") + "</span>");
+            out.println("<h3>" + rs.getString("title") + "</h3>");
+            out.println("<p>" + rs.getInt("units") + " units</p>");
             out.println("</div>");
         }
         rs.close();
