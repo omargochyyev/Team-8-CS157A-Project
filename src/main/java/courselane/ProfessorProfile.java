@@ -2,7 +2,6 @@ package courselane;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,9 +13,6 @@ import java.util.List;
  * rating history by course and semester, and rating trends by semester and year.
  */
 public class ProfessorProfile {
-
-    private static final String URL =
-        "jdbc:mysql://localhost:3306/CourseLaneDB?autoReconnect=true&useSSL=false";
 
     // Spring < Summer < Fall
     private static final String TERM_ORDER = "FIELD(r.semester, 'Spring', 'Summer', 'Fall')";
@@ -68,14 +64,8 @@ public class ProfessorProfile {
     }
 
     // ---------- helpers ----------
-
     private static Connection connect() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("MySQL driver not found", e);
-        }
-        return DriverManager.getConnection(URL, "root", "password");
+        return Db.get();
     }
 
     private static Double dbl(ResultSet rs, int col) throws SQLException {
