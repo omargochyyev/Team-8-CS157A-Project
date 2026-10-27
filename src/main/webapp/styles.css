@@ -163,3 +163,35 @@ nav.topnav {
   padding: 12px 16px;
   border-radius: 8px;
 }
+
+.search { display: flex; gap: 10px; align-items: center; margin-bottom: 24px; }
+.search input[type="text"] { flex: 1; max-width: 420px; padding: 11px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 15px; }
+.search input[type="text"]:focus { outline: none; border-color: #2563eb; }
+.search button { cursor: pointer; }
+.search .clear { color: #6b7280; font-size: 14px; text-decoration: none; }
+.search .clear:hover { color: #111827; }
+
+.card-link { text-decoration: none; color: inherit; }
+.back { display: inline-block; margin-bottom: 16px; color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 600; }
+.sub { font-size: 20px; margin: 36px 0 14px; }
+.muted { color: #6b7280; font-size: 13px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.stat { border: 1px solid #e5e7eb; border-radius: 14px; padding: 18px; }
+.stat-num { font-size: 28px; font-weight: 800; }
+.stat-label { color: #6b7280; font-size: 13px; margin-top: 4px; }
+.trend { font-size: 15px; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+.trend.up { color: #059669; background: #ecfdf5; }
+.trend.down { color: #b91c1c; background: #fef2f2; }
+.trend.flat { color: #374151; background: #f3f4f6; }
+.bars { display: flex; flex-direction: column; gap: 10px; }
+.bar-row { display: grid; grid-template-columns: 110px 1fr 90px; align-items: center; gap: 12px; font-size: 14px; }
+.bar-track { background: #f3f4f6; border-radius: 999px; height: 12px; overflow: hidden; }
+.bar-fill { background: #2563eb; height: 100%; border-radius: 999px; }
+.bar-val small { color: #6b7280; }
+table.data { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.data th, table.data td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
+table.data th { color: #6b7280; font-weight: 600; font-size: 13px; }
+.review { border: 1px solid #e5e7eb; border-radius: 14px; padding: 16px 20px; margin-bottom: 12px; }
+.review-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.review-meta .tag, .review-meta .rating { margin: 0; }
+.review p { margin: 10px 0 0; }

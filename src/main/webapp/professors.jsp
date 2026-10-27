@@ -1,4 +1,8 @@
-<%@ page import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, courselane.ProfessorProfile" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+  String q = request.getParameter("q");
+  q = (q == null) ? "" : q.trim();
+%>
 <html>
 <head>
   <title>Professors - CourseLane</title>
@@ -21,29 +25,34 @@
 
 <div class="section">
   <h2>Meet Your Professors</h2>
+
+  <form class="search" method="get" action="professors.jsp">
+    <input type="text" name="q" value="<%= ProfessorProfile.esc(q) %>" placeholder="Search professors by name...">
+    <button class="btn btn-primary" type="submit">Search</button>
+    <% if (!q.isEmpty()) { %><a class="clear" href="professors.jsp">Clear</a><% } %>
+  </form>
+
   <div class="card-grid">
   <%
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/CourseLane?autoReconnect=true&useSSL=false",
-            "root", "password");
-
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM Professors");
-
-        while (rs.next()) {
-            out.println("<div class='card'>");
-            out.println("<span class='tag'>" + rs.getString("Department") + "</span>");
-            out.println("<h3>" + rs.getString("Name") + "</h3>");
-            out.println("<span class='rating'>&#9733; " + rs.getBigDecimal("AvgRating") + "</span>");
-            out.println("</div>");
+        List<ProfessorProfile.Summary> list = ProfessorProfile.search(q);
+        if (list.isEmpty()) {
+            out.println("<div class='error'>No professors match \"" + ProfessorProfile.esc(q) + "\".</div>");
         }
-        rs.close();
-        stmt.close();
-        con.close();
+        for (ProfessorProfile.Summary s : list) {
+            out.println("<a class='card-link' href='professor.jsp?id=" + s.id + "'>");
+            out.println("<div class='card'>");
+            out.println("<h3>" + ProfessorProfile.esc(s.name) + "</h3>");
+            if (s.reviewCount == 0) {
+                out.println("<span class='rating'>No reviews</span>");
+            } else {
+                out.println("<span class='rating'>&#9733; " + ProfessorProfile.fmt(s.avgQuality) + "</span>");
+                out.println("<p>" + s.reviewCount + " review" + (s.reviewCount == 1 ? "" : "s") + "</p>");
+            }
+            out.println("</div></a>");
+        }
     } catch (Exception e) {
-        out.println("<div class='error'>Error: " + e.getMessage() + "</div>");
+        out.println("<div class='error'>Error: " + ProfessorProfile.esc(e.getMessage()) + "</div>");
     }
   %>
   </div>
