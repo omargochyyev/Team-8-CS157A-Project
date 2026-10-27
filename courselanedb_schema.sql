@@ -36,6 +36,7 @@ CREATE TABLE Student (
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
+    major VARCHAR(100) DEFAULT 'Computer Science',
     preferred_credits_per_term INT,
     grad_year INT,
     grad_semester VARCHAR(10),
@@ -158,17 +159,17 @@ INSERT INTO Professor (professor_id, first_name, last_name) VALUES
 (9, 'Katerina', 'Potika'),
 (10, 'Jon', 'Pearce');
 
-INSERT INTO Student (student_id, first_name, last_name, email, password_hash, preferred_credits_per_term, grad_year, grad_semester) VALUES
-(1, 'Maria', 'Lopez', 'maria.lopez@sjsu.edu', 'hash1', 15, 2026, 'Spring'),
-(2, 'James', 'Chen', 'james.chen@sjsu.edu', 'hash2', 12, 2026, 'Fall'),
-(3, 'Aisha', 'Khan', 'aisha.khan@sjsu.edu', 'hash3', 16, 2027, 'Spring'),
-(4, 'David', 'Kim', 'david.kim@sjsu.edu', 'hash4', 14, 2026, 'Spring'),
-(5, 'Sofia', 'Garcia', 'sofia.garcia@sjsu.edu', 'hash5', 15, 2027, 'Spring'),
-(6, 'Ethan', 'Nguyen', 'ethan.nguyen@sjsu.edu', 'hash6', 13, 2026, 'Fall'),
-(7, 'Olivia', 'Patel', 'olivia.patel@sjsu.edu', 'hash7', 15, 2026, 'Spring'),
-(8, 'Noah', 'Brown', 'noah.brown@sjsu.edu', 'hash8', 12, 2027, 'Spring'),
-(9, 'Grace', 'Martinez', 'grace.martinez@sjsu.edu', 'hash9', 16, 2026, 'Fall'),
-(10, 'Liam', 'Davis', 'liam.davis@sjsu.edu', 'hash10', 14, 2027, 'Spring');
+INSERT INTO Student (student_id, first_name, last_name, email, password_hash, major, preferred_credits_per_term, grad_year, grad_semester) VALUES
+(1, 'Maria', 'Lopez', 'maria.lopez@sjsu.edu', 'hash1', 'Computer Science', 15, 2026, 'Spring'),
+(2, 'James', 'Chen', 'james.chen@sjsu.edu', 'hash2', 'Computer Science', 12, 2026, 'Fall'),
+(3, 'Aisha', 'Khan', 'aisha.khan@sjsu.edu', 'hash3', 'Computer Science', 16, 2027, 'Spring'),
+(4, 'David', 'Kim', 'david.kim@sjsu.edu', 'hash4', 'Computer Science', 14, 2026, 'Spring'),
+(5, 'Sofia', 'Garcia', 'sofia.garcia@sjsu.edu', 'hash5', 'Computer Science', 15, 2027, 'Spring'),
+(6, 'Ethan', 'Nguyen', 'ethan.nguyen@sjsu.edu', 'hash6', 'Computer Science', 13, 2026, 'Fall'),
+(7, 'Olivia', 'Patel', 'olivia.patel@sjsu.edu', 'hash7', 'Computer Science', 15, 2026, 'Spring'),
+(8, 'Noah', 'Brown', 'noah.brown@sjsu.edu', 'hash8', 'Computer Science', 12, 2027, 'Spring'),
+(9, 'Grace', 'Martinez', 'grace.martinez@sjsu.edu', 'hash9', 'Computer Science', 16, 2026, 'Fall'),
+(10, 'Liam', 'Davis', 'liam.davis@sjsu.edu', 'hash10', 'Computer Science', 14, 2027, 'Spring');
 
 INSERT INTO Roadmap (student_id, roadmap_name) VALUES
 (1, 'Main Plan'),
