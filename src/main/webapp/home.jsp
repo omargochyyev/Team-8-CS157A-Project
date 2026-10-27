@@ -13,6 +13,7 @@
     <a href="#">Course Search</a>
     <a href="#">Roadmap</a>
     <a href="professors.jsp">Professors</a>
+    <a href="compare.jsp">Compare</a>
     <a href="#">Profile</a>
     <a href="#">Login</a>
   </div>

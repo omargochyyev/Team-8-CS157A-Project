@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*"%>
+<%@ page import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
   <title>Professors - CourseLane</title>
@@ -13,6 +13,7 @@
     <a href="#">Course Search</a>
     <a href="#">Roadmap</a>
     <a href="professors.jsp">Professors</a>
+    <a href="compare.jsp">Compare</a>
     <a href="#">Profile</a>
     <a href="#">Login</a>
   </div>
