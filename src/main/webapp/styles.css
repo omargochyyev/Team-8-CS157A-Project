@@ -290,3 +290,21 @@ table.data th { color: #6b7280; font-weight: 600; font-size: 13px; }
 .review-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .review-meta .tag, .review-meta .rating { margin: 0; }
 .review p { margin: 10px 0 0; }
+
+/* ---- Roadmap ---- */
+button.btn { cursor: pointer; font-family: inherit; }
+.btn-sm { padding: 6px 12px; font-size: 13px; margin-left: 0; }
+.btn-danger { background: #fef2f2; color: #b91c1c; }
+.btn-danger:hover { background: #fee2e2; }
+.term-card { margin-bottom: 16px; }
+.term-card:hover { transform: none; box-shadow: none; }
+.term-card h3 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.term-card h3 .muted { font-size: 14px; font-weight: 500; }
+.plan-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.plan-main { flex: 1 1 260px; }
+.plan-main .tag { margin-bottom: 0; margin-right: 6px; }
+.inline-form { display: inline-flex; gap: 6px; align-items: center; margin: 0; }
+.inline-form select { min-width: 0; padding: 5px 8px; font-size: 13px; }
+.issue { color: #92400e; font-size: 13px; margin-top: 4px; }
+.warn-list { margin: 8px 0 0; padding-left: 18px; }
+.warn-list li { margin-bottom: 4px; }
