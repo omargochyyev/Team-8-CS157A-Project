@@ -613,7 +613,7 @@ public class Roadmap {
                     CourseSearch.Course c = courses.get(k);
                     if (off != null && !off.contains(k)) continue;
                     if (!unmetPrereqs(reqs.get(k), t.key(), history, planned).isEmpty()) continue;
-                    if (units > 0 && units + c.units > creditsPerTerm) continue;
+                    if (units + c.units > creditsPerTerm) continue;
                     picks.add(k);
                     units += c.units;
                 }
