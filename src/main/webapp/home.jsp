@@ -11,7 +11,7 @@
   <div class="nav-links">
     <a href="home.jsp">Dashboard</a>
     <a href="courses.jsp">Course Search</a>
-    <a href="#">Roadmap</a>
+    <a href="roadmap.jsp">Roadmap</a>
     <a href="professors.jsp">Professors</a>
     <a href="compare.jsp">Compare</a>
     <a href="profile.jsp">Profile</a>
@@ -22,7 +22,7 @@
 <div class="hero">
   <h1>Plan smarter.</h1>
   <p>Track requirements, plan your roadmap, and find the right professors all in one place.</p>
-  <a class="btn btn-primary" href="#">Get Started</a>
+  <a class="btn btn-primary" href="profile.jsp">Get Started</a>
   <a class="btn btn-secondary" href="professors.jsp">View Professors</a>
 </div>
 
