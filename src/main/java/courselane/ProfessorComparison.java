@@ -55,8 +55,6 @@ public class ProfessorComparison {
           + "WHERE r.subject_code = ? AND r.course_number = ?";
 
         Map<Integer, Row> professors = new LinkedHashMap<>();
-        int latestTerm = 0;
-
         //this reads every review for this course and groups them by professor
         try (Connection con = connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -74,7 +72,6 @@ public class ProfessorComparison {
                     // Spring = 1, Fall = 2, so a bigger number is a later term
                     int term = rs.getInt("year") * 10
                              + (rs.getString("semester").equals("Fall") ? 2 : 1);
-                    latestTerm = Math.max(latestTerm, term);
                     row.terms.add(term);
                     row.quality.add(rs.getDouble("quality_rating"));
                     row.difficulty.add(rs.getDouble("difficulty_rating"));
@@ -85,6 +82,10 @@ public class ProfessorComparison {
         //calculates averages, counts and trend for each professor
         List<Row> rows = new ArrayList<>(professors.values());
         for (Row row : rows) {
+            int latestTerm = 0;
+            for (int term : row.terms) {
+                latestTerm = Math.max(latestTerm, term);
+            }
             double qualitySum = 0, difficultySum = 0;
             double recentSum = 0, earlierSum = 0;
             int recentCount = 0, earlierCount = 0;
