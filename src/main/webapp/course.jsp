@@ -12,7 +12,7 @@
   <div class="nav-links">
     <a href="home.jsp">Dashboard</a>
     <a href="courses.jsp">Course Search</a>
-    <a href="#">Roadmap</a>
+    <a href="roadmap.jsp">Roadmap</a>
     <a href="professors.jsp">Professors</a>
     <a href="compare.jsp">Compare</a>
     <a href="profile.jsp">Profile</a>

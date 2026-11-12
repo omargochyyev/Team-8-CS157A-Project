@@ -44,7 +44,8 @@ public class CourseSearch {
         String like = (q == null || q.isBlank()) ? "%" : "%" + q.trim() + "%";
         String sql = "SELECT subject_code, course_number, title, units, description,"
             + " requirement_category FROM Course"
-            + " WHERE subject_code LIKE ? OR course_number LIKE ?"
+            + " WHERE CONCAT(subject_code, ' ', course_number) LIKE ?"
+            + " OR subject_code LIKE ? OR course_number LIKE ?"
             + " OR title LIKE ? OR description LIKE ?"
             + " ORDER BY subject_code, course_number LIMIT 100";
         try (Connection con = Db.get();
@@ -53,6 +54,7 @@ public class CourseSearch {
             ps.setString(2, like);
             ps.setString(3, like);
             ps.setString(4, like);
+            ps.setString(5, like);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     out.add(mapCourse(rs));

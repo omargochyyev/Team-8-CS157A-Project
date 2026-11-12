@@ -392,7 +392,7 @@ public class Roadmap {
             }
 
             Set<String> off = offered.get(tk);
-            if (off != null && !off.contains(it.key())) {
+            if (off == null || !off.contains(it.key())) {
                 rep.add(it.key(), tk, "No section published for " + it.termLabel() + ".");
             }
 
@@ -611,9 +611,9 @@ public class Roadmap {
                 int units = 0;
                 for (String k : remaining) {
                     CourseSearch.Course c = courses.get(k);
-                    if (off != null && !off.contains(k)) continue;
+                    if (off == null || !off.contains(k)) continue;
                     if (!unmetPrereqs(reqs.get(k), t.key(), history, planned).isEmpty()) continue;
-                    if (units > 0 && units + c.units > creditsPerTerm) continue;
+                    if (units + c.units > creditsPerTerm) continue;
                     picks.add(k);
                     units += c.units;
                 }
